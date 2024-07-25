@@ -8,6 +8,8 @@
 
 #DB
 postgres
+.env
+/prisma/migrations
 
 # testing
 /coverage
