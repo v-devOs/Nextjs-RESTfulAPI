@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { TodosGrid } from "@/todos";
 
 
 export const metadata = {
@@ -12,8 +13,8 @@ export default async function RestTodosPage() {
 
   return (
     <div>
-      <h1>Rest Todos Page</h1>
-     
+      {/* TODO: Formulario para agregar todo */}
+      <TodosGrid todos={todos}/>     
     </div>
   );
 }
