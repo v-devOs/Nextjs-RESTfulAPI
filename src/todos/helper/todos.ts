@@ -15,5 +15,4 @@ export const updateTodo = async( id: string, complete: boolean ): Promise<Todo> 
   console.log({dbTodo})
 
   return dbTodo;
-
 }

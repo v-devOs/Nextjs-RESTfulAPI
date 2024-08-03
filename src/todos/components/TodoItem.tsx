@@ -1,4 +1,3 @@
-'use client';
 import { Todo } from "@prisma/client"
 
 import styles from './TodoItem.module.css'
