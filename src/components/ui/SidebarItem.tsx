@@ -1,32 +1,32 @@
+'use client'
 import Link from "next/link"
-import { CiBookmarkCheck } from "react-icons/ci"
+import { usePathname } from "next/navigation"
 
-const menuItems = [
-  {
-    title: 'Dashboard',
-    icon: <CiBookmarkCheck size={30} />,
-    href: ''
-  },
-  {
-    title: 'Categories',
-    icon: <CiBookmarkCheck size={30} />,
-    href: ''
-  },
-]
+interface Props {
+  title: string,
+  path: string,
+  icon: React.ReactNode
+}
 
-export const SidebarItem = () => {
+
+export const SidebarItem = ({ title, path, icon }: Props) => {
+
+  const pathName = usePathname()
+
   return (
     <>
-      {
-        menuItems.map(({ title, icon, href }) => (
-          <li key={title}>
-            <Link href={href} className="relative px-4 py-3 flex items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400">
-              { icon }
-              <span className="-mr-1 font-medium">{ title }</span>
-            </Link>
-          </li>
-        ))
-      }
+      <li>
+        <Link
+          href={path}
+          className={`
+            relative px-4 py-3 flex items-center space-x-4 rounded-xl 
+            ${pathName === path ? 'text-white bg-gradient-to-r from-sky-600 to-cyan-400' : ''} 
+            hover:bg-gradient-to-r hover:bg-sky-600 hover:text-white
+          `}>
+            {icon}
+          <span className="-mr-1 font-medium">{title}</span>
+        </Link>
+      </li>
     </>
   )
 }

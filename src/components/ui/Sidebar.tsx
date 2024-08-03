@@ -1,9 +1,26 @@
 import Image from "next/image"
 import Link from "next/link"
-import { CiLogout } from "react-icons/ci"
+import { CiBookmarkCheck, CiLogout } from "react-icons/ci"
 import { SidebarItem } from "./SidebarItem"
+import { IoCalendarOutline, IoCheckboxOutline, IoListOutline } from "react-icons/io5"
 
-
+const menuItems = [
+  {
+    title: 'Dashboard',
+    icon: <IoCalendarOutline size={30} />,
+    path: '/dashboard'
+  },
+  {
+    title: 'Rest Todos',
+    icon: <IoCheckboxOutline size={30} />,
+    path: '/dashboard/rest-todos'
+  },
+  {
+    title: 'Dashboard',
+    icon: <IoListOutline size={30} />,
+    path: '/dashboard/server-todos'
+  },
+]
 
 export const Sidebar = () => {
   return (
@@ -18,14 +35,17 @@ export const Sidebar = () => {
         <div className="mt-8 text-center">
           <Image 
             src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp" 
-            alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" width={50} height={50}/>
+            alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" width={150} height={150}/>
           <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">Cynthia J. Watts</h5>
           <span className="hidden text-gray-400 lg:block">Admin</span>
         </div>
 
         <ul className="space-y-2 tracking-wide mt-8">
-          {/* Active className: text-white bg-gradient-to-r from-sky-600 to-cyan-400 */}
-          <SidebarItem />
+          {
+            menuItems.map( item => (
+              <SidebarItem key={item.path} {...item} />
+            ))
+          }
         </ul>
       </div>
 
