@@ -31,3 +31,11 @@ export const createTodo = async( description: string ): Promise<Todo> => {
 
   return dbTodo;
 }
+
+export const deleteCompletedTodos = async() => {
+  await fetch(`/api/todos/`, {
+    method: 'DELETE'
+  })
+
+  console.log('Todos Deleted')
+}
