@@ -16,7 +16,7 @@ const menuItems = [
     path: '/dashboard/rest-todos'
   },
   {
-    title: 'Dashboard',
+    title: 'Server Todos',
     icon: <IoListOutline size={30} />,
     path: '/dashboard/server-todos'
   },
