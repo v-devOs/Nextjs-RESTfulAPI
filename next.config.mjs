@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: 'tailus.io'
       }
     ]
+  },
+  experimental: {
+    staleTimes: {
+      dynamic: 0
+    }
   }
 };
 
