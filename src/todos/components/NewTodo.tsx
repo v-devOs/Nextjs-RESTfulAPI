@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-import { addTodo } from "../actions";
+import * as serverTodoActions from "../actions";
 
 
 export const NewTodo = () => { 
@@ -14,15 +14,11 @@ export const NewTodo = () => {
 
     if( description.trim().length === 0 ) return
 
-    await addTodo(description)
+    await serverTodoActions.addTodo(description)
     setDescription('')
   }
 
-  // const deleteCompleted = async() => {
-    
-  //   await todosApi.deleteCompletedTodos()
-  //   router.refresh()
-  // }
+  
 
   return (
     <form onSubmit={onsubmit} className='flex w-full'>
@@ -39,13 +35,11 @@ export const NewTodo = () => {
       <span className='flex flex-1'></span>
 
       <button 
-        // onClick={ () => deleteCompleted() }
+        onClick={ () => serverTodoActions.deleteCompleted() }
         type='button' className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all">
         <IoTrashOutline />
         <span className="ml-2">Borrar completados</span>
       </button>
-
-
     </form>
   )
 }
